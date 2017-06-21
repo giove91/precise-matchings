@@ -4,6 +4,7 @@ Construction of precise matchings for the local homology of finite and affine Ar
 
 ## Installation ##
 It is enough to clone this repository. No installation is needed.
+After cloning, you can run the test suite via `python test.py` or `pypy test.py`.
 
 Requirements: Python 2.7, [NZMATH](https://pypi.python.org/pypi/NZMATH/1.0.1).
 
