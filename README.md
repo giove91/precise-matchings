@@ -23,7 +23,7 @@ If `d` is not specified, all relevant local components are checked.
 Optional arguments `-v` and `-vv` ask for more verbose output.
 
 By default, the program construct a matching and checks that it is precise. It also computes the ranks of the boundary matrices of the Morse complex (they coincide with the ranks of the d-localized homology groups).
-With the `-v` option, critical simplices (with their weights) are also printed.
+With the `-v` option, critical simplices (with their d-weights) are also printed.
 With the `-vv` option the matching itself is also printed, together with the non-zero incidence numbers between critical simplices in the Morse complex.
 
 ### Example ###
