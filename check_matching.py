@@ -40,27 +40,31 @@ if __name__ == '__main__':
     generator = MatchingGenerator(debug=False)
     graph = None
     
-    if type == 'A':
-        graph = SphericalACoxeterGraph(n)
-    elif type == 'B':
-        graph = SphericalBCoxeterGraph(n)
-    elif type == 'D':
-        graph = SphericalDCoxeterGraph(n)
-    elif type[0] != 't':
-        # spherical exceptional cases
-        graph = SphericalExceptionalCoxeterGraph(type, n)
-    elif type == 'tA':
-        graph = AffineACoxeterGraph(n)
-    elif type == 'tB':
-        graph = AffineBCoxeterGraph(n)
-    elif type == 'tC':
-        graph = AffineCCoxeterGraph(n)
-    elif type == 'tD':
-        graph = AffineDCoxeterGraph(n)
-    else:
-        # affine exceptional cases
-        graph = AffineExceptionalCoxeterGraph(type, n)
+    try:
+        if type == 'A':
+            graph = SphericalACoxeterGraph(n)
+        elif type == 'B':
+            graph = SphericalBCoxeterGraph(n)
+        elif type == 'D':
+            graph = SphericalDCoxeterGraph(n)
+        elif type[0] != 't':
+            # spherical exceptional cases
+            graph = SphericalExceptionalCoxeterGraph(type, n)
+        elif type == 'tA':
+            graph = AffineACoxeterGraph(n)
+        elif type == 'tB':
+            graph = AffineBCoxeterGraph(n)
+        elif type == 'tC':
+            graph = AffineCCoxeterGraph(n)
+        elif type == 'tD':
+            graph = AffineDCoxeterGraph(n)
+        else:
+            # affine exceptional cases
+            graph = AffineExceptionalCoxeterGraph(type, n)
     
+    except AssertionError:
+        print "Unknown Coxeter type %s_%d." % (type, n)
+        sys.exit()
     
     complex = SimplicialComplex(graph)
     d_values = complex.relevant_d_values() if d is None else [d]
@@ -84,7 +88,8 @@ if __name__ == '__main__':
                     matching = pickle.load(f)
                 
             else:
-                raise Exception("Matching not found")
+                print "Matching not found."
+                sys.exit()
         
         if verbosity >= 2:
             print "Matching:"
