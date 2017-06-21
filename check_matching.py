@@ -15,7 +15,7 @@ MATCHINGS_DIR = 'matchings'
 if __name__ == '__main__':
     
     if len(sys.argv) < 3 or sys.argv[1] == "help":
-        print "Usage: python %s [A | B | D | E | F | H | tA | tB | tC | tD | tE | tF | tG | tI] n [d] [-v | -vv]" % sys.argv[0]
+        print "Usage: python %s A|B|D|E|F|H|tA|tB|tC|tD|tE|tF|tG|tI n [d] [-v|-vv]" % sys.argv[0]
         sys.exit()
     
     type = sys.argv[1]
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     if '-vv' in sys.argv:
         verbosity = 2
     
-    generator = MatchingGenerator(debug = verbosity>=2)
+    generator = MatchingGenerator(debug=False)
     graph = None
     
     if type == 'A':
@@ -86,8 +86,12 @@ if __name__ == '__main__':
             else:
                 raise Exception("Matching not found")
         
+        if verbosity >= 2:
+            print "Matching:"
+        
         for (sigma, tau) in matching:
-            # print sigma, tau
+            if verbosity >= 2:
+                print sigma, tau
             complex.add_to_matching(sigma, tau, d)
         
         complex.apply_matching()
