@@ -26,10 +26,13 @@ By default, the program construct a matching and checks that it is precise. It a
 With the `-v` option, critical simplices (with their d-weights) are also printed.
 With the `-vv` option the matching itself is also printed, together with the non-zero incidence numbers between critical simplices in the Morse complex.
 
-### Example ###
+### Example: D_8, d=4 ###
+<img src="images/D8.png" height="120">
+
 ```bash
 python check_matching.py D 8 4 -v
 ```
+
 
     type: D
     n=8
