@@ -86,7 +86,12 @@ if __name__ == '__main__':
                 # load matching from file
                 with open(filename, 'r') as f:
                     matching = pickle.load(f)
-                
+            
+            elif d not in complex.relevant_d_values():
+                # a trivial matching works
+                v = complex.vertices[0]
+                matching = [(sigma, tuple(u for u in sigma if u!=v)) for sigma in complex.simplices if v in sigma]
+            
             else:
                 print "Matching not found."
                 sys.exit()
