@@ -1,0 +1,17 @@
+(lp0
+((I1
+I2
+tp1
+(I2
+tp2
+tp3
+a((I1
+I3
+tp4
+(I3
+tp5
+tp6
+a((I1
+tp7
+(ttp8
+a.

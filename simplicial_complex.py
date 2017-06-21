@@ -186,17 +186,19 @@ class SimplicialComplex:
         return list(sorted(relevant_d))
     
     
-    def describe_matching(self, d):
-        print "Critical simplices:"
-        for s in self.critical_simplices():
-            print s.vertices, "\t", "w=%d" % s.weight.component(d)
+    def describe_matching(self, d, verbosity=0):
+        if verbosity >= 1:
+            print "Critical simplices:"
+            for s in self.critical_simplices():
+                print s.vertices, "\t", "w=%d" % s.weight.component(d)
         
         if self.morse_complex is None:
             self.compute_morse_complex()
         
-        print "In the Morse complex there are %d edge(s):" % len(self.morse_complex.edges)
-        for e in self.morse_complex.edges:
-            print e
+        if verbosity >= 2:
+            print "In the Morse complex there are %d edge(s):" % len(self.morse_complex.edges)
+            for e in self.morse_complex.edges:
+                print e
         
         if self.is_matching_precise(d):
             print "The matching is precise."
