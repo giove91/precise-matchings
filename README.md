@@ -2,6 +2,8 @@
 
 Construction of precise matchings for the local homology of finite and affine Artin groups.
 
+[![DOI](https://zenodo.org/badge/94903086.svg)](https://zenodo.org/badge/latestdoi/94903086)
+
 ## Installation ##
 It is enough to clone this repository. No installation is needed.
 After cloning, you can run the test suite via `python test.py` or `pypy test.py`.
