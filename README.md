@@ -1,6 +1,6 @@
 # Precise matchings
 
-Construction of precise matchings for the local homology of finite and affine Artin groups.
+Construction of precise matchings for the local homology of finite and affine Artin groups (see https://arxiv.org/abs/1709.01358).
 
 [![DOI](https://zenodo.org/badge/94903086.svg)](https://zenodo.org/badge/latestdoi/94903086)
 
