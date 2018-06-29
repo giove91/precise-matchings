@@ -15,7 +15,7 @@ MATCHINGS_DIR = 'matchings'
 if __name__ == '__main__':
     
     if len(sys.argv) < 3 or sys.argv[1] == "help":
-        print "Usage: python %s A|B|D|E|F|H|tA|tB|tC|tD|tE|tF|tG|tI n [d] [-v|-vv]" % sys.argv[0]
+        print "Usage: python %s A|B|D|E|F|H|tA|tB|tC|tD|tE|tF|tG|tI n [d] [-v|-vv] [-l]" % sys.argv[0]
         sys.exit()
     
     type = sys.argv[1]
@@ -68,6 +68,7 @@ if __name__ == '__main__':
     
     complex = SimplicialComplex(graph)
     d_values = complex.relevant_d_values() if d is None else [d]
+    ranks = {}
     
     for d in d_values:
         print "*** d=%d ***" % d
@@ -107,5 +108,22 @@ if __name__ == '__main__':
         complex.apply_matching()
         complex.compute_morse_complex()
         complex.describe_matching(d, verbosity=verbosity)
-
+        ranks[d] = complex.get_ranks()
+    
+    if '-l' in sys.argv:
+        print
+        print "Homology:"
+        # print latex description of homology
+        homology = {i: [] for i in xrange(n)}
+        for d in d_values:
+            for (i, rank) in enumerate(ranks[d]):
+                if rank > 0:
+                    homology[i].append((d, rank))
+        for i in xrange(n):
+            # print i-th homology group
+            hom = homology[i]
+            if len(hom) == 0:
+                print 0
+            else:
+                print " \oplus ".join(("\{%d\}" % d) + ("" if rank == 1 else "^{%d}" % rank) for d, rank in hom)
 
