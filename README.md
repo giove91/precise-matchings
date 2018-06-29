@@ -12,7 +12,7 @@ Requirements: Python 2.7, [NZMATH](https://pypi.python.org/pypi/NZMATH/1.0.1).
 
 ## Usage ##
 ```bash
-python check_matching.py A|B|D|E|F|H|tA|tB|tC|tD|tE|tF|tG|tI n [d] [-v|-vv]
+python check_matching.py A|B|D|E|F|H|tA|tB|tC|tD|tE|tF|tG|tI n [d] [-v|-vv] [-l]
 ```
 
 The first argument is the Coxeter type, where `t` stands for "tilde" and denotes affine types.
@@ -22,7 +22,7 @@ The second argument `n` (integer >= 1) is the size of the Coxeter system.
 The third optional argument `d` (integer >= 2) indicates which local component to check.
 If `d` is not specified, all relevant local components are checked.
 
-Optional arguments `-v` and `-vv` ask for more output.
+Optional arguments `-v` and `-vv` ask for more output, and `-l` asks for a LaTeX-friendly description of the torsion part of the local homology (one row per homology group, starting from the 0-th).
 
 By default, the program constructs a matching and checks that it is precise. It also computes the ranks of the boundary matrices of the Morse complex (they coincide with the ranks of the d-localized homology groups).
 With the `-v` option, critical simplices (with their d-weights) are also printed.
